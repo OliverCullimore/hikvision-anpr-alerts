@@ -1,0 +1,37 @@
+{{define "form"}}
+
+{{template "headstart" .}}
+{{template "headend" .}}
+
+<header>
+    {{template "nav" .}}
+</header>
+
+<main>
+    {{if .Title}}<h2>{{.Title}}</h2>{{end}}
+    <form method="post" class="adminform">
+        {{if .ErrorMessages}}<div class="message error">{{range .ErrorMessages}}{{.}}{{end}}</div>{{end}}
+        {{range .View.Fields}}
+        <label for="{{.Name}}">
+            <span>{{.Title}}</span>
+            {{if eq .Type "select"}}
+                <select name="{{.Name}}" id="{{.Name}}" class="{{.Class}}" placeholder="{{.Placeholder}}">
+                    {{range .Values}}
+                    <option value="{{.}}"{{if eq . .Value}}selected="selected"{{end}}>{{.}}</option>
+                    {{end}}
+                </select>
+            {{else if eq .Type "textarea"}}
+                <textarea name="{{.Name}}" id="{{.Name}}" class="{{.Class}}" placeholder="{{.Placeholder}}">{{.Value}}</textarea>
+            {{else}}
+                <input type="{{.Type}}" name="{{.Name}}" id="{{.Name}}" class="{{.Class}}" placeholder="{{.Placeholder}}" value="{{.Value}}" {{if .Checked}}checked="checked"{{end}}/>
+            {{end}}
+        </label>
+        {{end}}
+        {{if .View.CancelLink}}<a href="{{.View.CancelLink}}" class="btn btn-red">Cancel</a>{{end}}
+        <button type="submit" id="submit" class="btn btn-primary">{{.View.SubmitName}}</button>
+    </form>
+</main>
+
+{{template "footer" .}}
+
+{{end}}

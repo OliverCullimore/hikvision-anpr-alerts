@@ -1,0 +1,387 @@
+:root {
+    --bg-color: #fff;
+    --bg-color-hover: #eee;
+    --border-color: #ccc;
+    --font-color: #000;
+    --primary-color: #4285f4;
+    --yellow-color: #f80;
+    --red-color: #ff3547;
+    --white-color: #fff;
+    --grey-color: #aaa;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+[data-theme="dark"] {
+    color-scheme: dark;
+    --bg-color: #131516;
+    --bg-color-hover: #2c2c2c;
+    --border-color: #2c2c2c;
+    --font-color: #fff;
+    --grey-color: #7d7d7d;
+    --shadow-color: rgba(255, 255, 255, 0.1);
+}
+body {
+    background: var(--bg-color);
+    color: var(--font-color);
+    font-family: "Lato", sans-serif;
+    line-height: normal;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+/* Common */
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0 0 0.5rem 0;
+    font-weight: normal;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.text-left {
+    text-align: left;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+.blue {
+    color: var(--primary-color);
+}
+.yellow {
+    color: var(--yellow-color);
+}
+.red {
+    color: var(--red-color);
+}
+.white {
+    color: var(--white-color);
+}
+.message {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.message.error {
+    border: 2px solid var(--red-color);
+    color: var(--red-color);
+}
+a, a:visited {
+    color: initial;
+}
+button, input, textarea, select, .btn {
+    background: var(--bg-color);
+    color: inherit;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    box-sizing: border-box;
+    outline: none;
+}
+input, textarea, select {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 8px;
+    margin: 8px 0;
+}
+textarea {
+    resize: vertical;
+}
+input[type="checkbox"], input[type="radio"], input[type="color"] {
+    width: auto;
+    margin-left: 5px;
+}
+input[type="color"] {
+    width: 30px;
+    height: 30px;
+    padding: 0 1px;
+    vertical-align: middle;
+}
+label {
+    display: block;
+    float: left;
+    width: 100%;
+    margin: 0 0 5px 0;
+}
+.inlinegroup {
+    display: block;
+    float: left;
+    width: 100%;
+}
+label.inline {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+}
+.inlinegroup label.inline:last-of-type {
+    margin-right: 0;
+}
+iconify-icon {
+    font-size: 22px;
+}
+
+/* Buttons */
+button, .btn {
+    padding: 0.5rem 1.6rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn {
+    display: inline-block;
+}
+.btn.btn-primary {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.btn.btn-grey {
+    background: var(--border-color);
+    border-color: var(--border-color);
+}
+.btn.btn-yellow {
+    background: var(--yellow-color);
+    border-color: var(--yellow-color);
+}
+.btn.btn-red {
+    background: var(--red-color);
+    border-color: var(--red-color);
+}
+.btn.btn-primary, .btn.btn-yellow, .btn.btn-red {
+    color: var(--white-color);
+}
+.btn-noborder {
+    border: none;
+}
+.btn iconify-icon, .btn span {
+    vertical-align: text-top;
+}
+.buttons {
+    float: left;
+    width: 100%;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+.buttons .btn-icon {
+    margin: 0 10px;
+}
+iconify-icon.icon-text {
+    vertical-align: text-top;
+    margin-right: 5px;
+}
+
+/* Header */
+header, main, nav {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+header {
+    padding: 8px 15px;
+    border-bottom: 1px solid var(--bg-color-hover);
+}
+main {
+    overflow-x: hidden;
+    padding: 10px 15px;
+}
+main h2 {
+    float: left;
+    margin: 0 0 15px 0;
+}
+main form {
+    float: left;
+    width: 100%;
+}
+
+/* Navbar */
+nav {
+    text-align: right;
+}
+nav #sidebar-toggle {
+    padding: 6px;
+    margin-right: 15px;
+}
+nav .logo, nav h1 {
+    float: left;
+    margin: 0;
+}
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+nav ul li {
+    display: inline-block;
+}
+nav .right {
+    margin-left: 10px;
+}
+nav .btn-dropdown {
+    padding: 0.5rem;
+}
+nav .btn-dropdown iconify-icon {
+    margin: 0;
+}
+nav .btn-dropdown iconify-icon.arrow {
+    font-size: 20px;
+}
+nav .dropdown-menu {
+    position: relative;
+    display: inline-block;
+}
+nav .dropdown-menu-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--bg-color);
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 var(--shadow-color);
+    z-index: 1001;
+}
+nav .dropdown-menu:hover .dropdown-menu-content {
+    display: block;
+}
+nav .dropdown-menu-content a {
+    color: var(--font-color);
+    padding: 1rem;
+    text-decoration: none;
+    display: block;
+}
+nav .dropdown-menu-content a:hover {
+    background-color: var(--bg-color-hover);
+}
+nav .dropdown-menu-content a iconify-icon {
+    vertical-align: text-top;
+}
+
+/* Pagination */
+.pagination {
+    float: right;
+    padding: 0;
+    margin: 0 0 15px 0;
+    list-style: none;
+}
+.pagination li {
+    float: left;
+    display: inline-block;
+}
+.pagination .pagination-link {
+    padding: 0.3rem 0.8rem;
+    border-left: none;
+    border-radius: 0;
+}
+.pagination .pagination-link:hover, .pagination .pagination-link:focus, .pagination .pagination-link:active, .pagination .pagination-link.current {
+    color: var(--primary-color);
+}
+.pagination .pagination-link-previous {
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    border-left: 1px solid var(--bg-color-hover);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.pagination .pagination-link-next {
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.pagination .pagination-link iconify-icon {
+    max-width: 12px;
+    max-height: 12px;
+    margin: 0 0 3px 0;
+}
+
+#login {
+    max-width: 400px;
+    padding: 40px 0;
+    margin: 0 auto;
+    text-align: center;
+}
+#login .logo {
+    margin: 0 0 30px 0;
+}
+#login h2 {
+    float: none;
+}
+#login form {
+    display: inline-block;
+}
+#login form label {
+    height: 0;
+    margin: 0;
+    text-align: left;
+    overflow: hidden;
+}
+#login form .btn {
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+
+nav .nav-right {
+    float: right;
+}
+
+.btn:hover, .btn:focus, .btn:active {
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+}
+.btn-link {
+    float: left;
+    margin: 0 0 0 10px;
+    border: none;
+}
+.btn-link:hover, .btn-link:focus, .btn-link:active {
+    color: var(--primary-color);
+    box-shadow: none;
+}
+
+.row {
+    clear: both;
+}
+.row .field {
+    display: inline-block;
+    width: 15%;
+    padding: 0 0 8px 0;
+    vertical-align: middle;
+}
+.row .field.field-width-auto {
+    width: auto;
+}
+.row .field.field-width-20 {
+    width: 20%;
+}
+.row .field.field-width-30 {
+    width: 30%;
+}
+.row .field.field-width-40 {
+    width: 40%;
+}
+.row .field.field-width-50 {
+    width: 50%;
+}
+.row .field.field-padding-left {
+    padding-left: 8px;
+}
+.row .field.field-padding-right {
+    padding-right: 8px;
+}
+
+/* not mobile */
+@media (min-width: 769px) {
+    label.inline-20 {
+        width: calc(20% - 10px);
+    }
+    label.inline-25 {
+        width: calc(25% - 10px);
+    }
+    label.inline-33 {
+        width: calc(33.66% - 10px);
+    }
+    label.inline-50 {
+        width: calc(50% - 10px);
+    }
+}

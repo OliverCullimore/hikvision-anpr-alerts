@@ -1,0 +1,39 @@
+{{define "list"}}
+
+{{template "headstart" .}}
+{{template "headend" .}}
+
+<header>
+    {{template "nav" .}}
+</header>
+
+<main>
+    {{if .Title}}<h2>{{.Title}}</h2>{{end}}
+    {{if .ErrorMessages}}<div class="message error">{{range .ErrorMessages}}{{.}}{{end}}</div>{{end}}
+    {{if and .View.Pagination .View.Pagination.Current .View.Pagination.Pages}}
+    <ul class="pagination">
+        <li><a class="btn pagination-link pagination-link-previous{{if eq .View.Pagination.Previous 0}} disabled{{end}}"{{if ne .View.Pagination.Previous 0}} href="?page={{.View.Pagination.Previous}}"{{end}} title="Previous"><iconify-icon icon="mdi:chevron-left"></iconify-icon></a></li>
+        {{range .View.Pagination.Pages}}
+        <li><a class="btn pagination-link{{if eq $.View.Pagination.Current .}} current{{end}}{{if eq . 0}} disabled{{end}}"{{if ne . 0}} href="?page={{.}}"{{end}} title="{{.}}">{{if ne . 0}}{{.}}{{else}}...{{end}}</a></li>
+        {{end}}
+        <li><a class="btn pagination-link pagination-link-next{{if eq .View.Pagination.Next 0}} disabled{{end}}"{{if ne .View.Pagination.Next 0}} href="?page={{.View.Pagination.Next}}"{{end}} title="Next"><iconify-icon icon="mdi:chevron-right"></iconify-icon></a></li>
+    </ul>
+    {{end}}
+    {{range .View.Rows}}
+    <div class="row">
+        {{range .Fields}}
+        <span class="field{{if .FieldClass}}{{.FieldClass}}{{end}}">
+            {{if eq .Type ""}}
+                {{.Value}}
+            {{else if eq .Type "link"}}
+                <a {{if .Class}}class="{{.Class}}"{{end}} {{if .Link}}href="{{.Link}}"{{end}} {{if .Confirm}}onclick="return confirm('{{.Confirm}}');"{{end}}>{{if .Icon}}<iconify-icon icon="mdi:{{.Icon}}" class="icon-text"></iconify-icon>{{end}}<span>{{.Value}}</span></a>
+            {{end}}
+        </span>
+        {{end}}
+    </div>
+    {{end}}
+</main>
+
+{{template "footer" .}}
+
+{{end}}

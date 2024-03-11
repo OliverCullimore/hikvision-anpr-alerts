@@ -1,0 +1,25 @@
+{{define "headstart"}}
+<!DOCTYPE html>
+<html lang="en"{{if .Theme}} data-theme="{{.Theme}}"{{end}}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Language" content="en"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <title>{{if or .Title}}{{if .Title}}{{.Title}}{{end}} | {{end}}Hikvision ANPR Alerts</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/static/css/normalize.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+{{end}}
+
+{{define "headend"}}
+</head>
+<body{{if .Type}} class="{{.Type}}"{{end}}>
+{{end}}

@@ -1,0 +1,19 @@
+{{define "nav"}}
+
+<nav>
+    <a href="/" class="logo"><h1>Hikvision ANPR Alerts</h1></a>
+    <div class="dropdown-menu right">
+        <button class="btn btn-icon btn-dropdown btn-noborder"><iconify-icon icon="mdi:account-circle"></iconify-icon><iconify-icon icon="mdi:chevron-down" class="arrow"></iconify-icon></button>
+        <div class="dropdown-menu-content">
+            <a href="/logout"><iconify-icon icon="mdi:logout" class="icon-text"></iconify-icon>Logout</a>
+            <a href="#" id="theme-toggle"><iconify-icon icon="mdi:theme-light-dark" class="icon-text"></iconify-icon>Theme</a>
+        </div>
+    </div>
+    <ul class="nav-right">
+        <li{{if eq .RequestURL "/"}} class="active"{{end}}><a href="/" class="btn btn-link">Number Plates</a></li>
+        <li{{if eq .RequestURL "/cameras"}} class="active"{{end}}><a href="/cameras" class="btn btn-link">Cameras</a></li>
+        <li{{if eq .RequestURL "/users"}} class="active"{{end}}><a href="/users" class="btn btn-link">Users</a></li>
+    </ul>
+</nav>
+
+{{end}}

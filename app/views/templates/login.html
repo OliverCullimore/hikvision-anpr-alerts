@@ -1,0 +1,22 @@
+{{define "login"}}
+
+{{template "headstart" .}}
+{{template "headend" .}}
+
+<main>
+    <div id="login">
+        <h1 class="logo">Hikvision ANPR Alerts</h1>
+        <h2>Login</h2>
+        <form method="post">
+            {{if .ErrorMessages}}<div class="message error">{{range .ErrorMessages}}{{.}}{{end}}</div>{{end}}
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" placeholder="Email address"/>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Password"/>
+            <button type="submit" id="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+</main>
+
+{{template "footer" .}}
+{{end}}
